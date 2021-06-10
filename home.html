@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="bg-white rounded shadow p-6 m-4 w-full lg:w-3/4 lg:max-w-lg">
+  <div class="mb-4">
+    <h1 class="text-grey-darkest">Flask Todo List</h1>
+    <div class="flex mt-4">
+      {% include "partials/_form.html" %}
+    </div>
+  </div>
+  <div>
+    {% if tasks %}
+    {% for task in tasks %}
+    <div class="flex mb-4 items-center">
+      <p class="w-full text-grey-darkest">
+        <a href="#">{{ task.name }}</a>
+      </p>
+      <button
+        class="flex-no-shrink p-2 ml-2 border-2 rounded text-red border-red hover:text-white hover:bg-red bg-red-600"
+      ><a
+  class="flex-no-shrink p-2 ml-2 border-2 rounded text-red border-red hover:text-white hover:bg-red bg-red-600"
+  href="/delete/{{ task.id }}"
+>
+  Remove
+</a>
+      </button>
+    </div>
+    {% endfor %}
+    {% else %}
+
+    <p class="text-center">No Task to display</p>
+
+    {% endif %}
+  </div>
+</div>
+{% endblock content %}
